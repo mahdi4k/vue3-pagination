@@ -1,27 +1,5 @@
 <template>
   <ul class="Pagination">
-    <li v-if="!hideFirstButton" class="PaginationControl">
-      <icon-page-first
-        class="Control"
-        :class="{ 'Control-active': isPrevControlsActive }"
-        @click="goToFirst"
-      />
-    </li>
-    <li class="PaginationControl">
-      <icon-chevron-left
-        class="Control"
-        :class="{ 'Control-active': isPrevControlsActive }"
-        @click="goToPrev"
-      />
-    </li>
-    <v-page
-      v-for="page in pagination"
-      :key="`pagination-page-${page}`"
-      :page="page"
-      :current="modelValue"
-      :active-color="activeColor"
-      @update="updatePageHandler"
-    />
     <li class="PaginationControl">
       <icon-chevron-right
         class="Control"
@@ -34,6 +12,28 @@
         class="Control"
         :class="{ 'Control-active': isNextControlsActive }"
         @click="goToLast"
+      />
+    </li>
+    <v-page
+      v-for="page in pagination"
+      :key="`pagination-page-${page}`"
+      :page="page"
+      :current="modelValue"
+      :active-color="activeColor"
+      @update="updatePageHandler"
+    />
+    <li v-if="!hideFirstButton" class="PaginationControl">
+      <icon-page-first
+        class="Control"
+        :class="{ 'Control-active': isPrevControlsActive }"
+        @click="goToFirst"
+      />
+    </li>
+    <li class="PaginationControl">
+      <icon-chevron-left
+        class="Control"
+        :class="{ 'Control-active': isPrevControlsActive }"
+        @click="goToPrev"
       />
     </li>
   </ul>
